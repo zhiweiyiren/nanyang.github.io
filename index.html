@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Refresh" Content="10; ./welcome.html">
+
+<title>资源站汇总</title>
+<style type="text/css">
+    canvas {display: block;}
+	html
+	{
+	background:black;
+	margin:0px;
+	padding:0px;
+	border:0px;
+	height:100%;
+	width:100%;
+	overflow:hidden;
+	}
+</style>
+</head>
+<body>
+	<canvas id="c"></canvas>
+	<script type="text/javascript">
+			window.onload=function()
+			{
+				var c = document.getElementById("c");
+				//getContext() 方法返回一个用于在画布上绘图的环境。
+				var ctx = c.getContext("2d");
+
+				c.addEventListener('click', function(e)
+				{
+					location.href="./welcome.html";
+				}, false);
+
+				//全屏显示
+				c.height = window.innerHeight;
+				c.width = window.innerWidth;
+
+				var txts = "你站在桥上看风景看风景的人在楼上看你明月装饰了你的窗子你装饰了别人的梦";
+				txts = txts.split("");
+
+				//计算屏幕中显示的列数
+				var font_size = 28;
+				var columns = c.width/font_size;
+
+				//每行要输出数组
+				var drops = [];
+
+				for(var x = 0; x < columns; x++)
+					drops[x] = 1;
+
+				//字符随机颜色
+				var wh_color = new Array();
+				wh_color[0]="#57CE13";
+				wh_color[1]="#50BF7F";
+				wh_color[2]="#28E8DA";
+
+				//绘出字符
+				function draw()
+				{
+					//黑色背景，半透明显示
+					ctx.fillStyle = "rgba(0, 0, 0, 0.09)";
+					//左上起点和画布的宽、长
+					ctx.fillRect(0, 0, c.width, c.height);
+		
+					//产生随机数0-(n-1)的方法Math.floor(Math.random()*n);
+					ctx.fillStyle = wh_color[Math.floor(Math.random()*3)];
+
+					ctx.font = font_size + "px arial";
+					//28px arial
+
+					//drops循环
+					for(var i = 0; i < drops.length; i++)
+					{
+						//随机打印字符
+						var text = txts[Math.floor(Math.random()*txts.length)];
+						//console.log(text);
+
+						//x = i*font_size
+						//y = value of drops[i]*font_size
+						ctx.fillText(text, i*font_size, drops[i]*font_size);
+
+						if(drops[i]*font_size > c.height || Math.random() > 0.95)
+							drops[i] = 0;
+
+						//Y坐标增加
+						drops[i]++;
+					}
+				}
+				//setInterval() 方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。
+				setInterval(draw, 50);
+			}
+	</script>
+</body>
+</html>
