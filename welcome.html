@@ -21,7 +21,8 @@
 			<ul id="selectNav" class="select-nav">
 				<span class="selection"></span>
 				<li class="frontend">
-					<a href="http://rs.xidian.edu.cn/bt.php?mod=browse&t=all"> <strong>西电睿思</strong>
+					<a href="http://rs.xidian.edu.cn/bt.php?mod=browse&t=all" target="_blank"> 
+						<strong>西电睿思</strong>
 						<span class="alive icon">
 							<span class="bar a"></span>
 							<span class="bar b"></span>
@@ -31,7 +32,8 @@
 					</a>
 				</li>
 				<li class="design">
-					<a href="https://nanyangpt.com/torrents.php"> <strong>南洋园</strong>
+					<a href="https://nanyangpt.com/torrents.php" target="_blank"> 
+						<strong>南洋园</strong>
 						<span class="alive icon">
 							<span class="bar a"></span>
 							<span class="bar b"></span>
@@ -41,7 +43,7 @@
 					</a>
 				</li>
 				<li class="diary">
-					<a href="http://bt.neu6.edu.cn/plugin.php?id=neubt_resourceindex">
+					<a href="http://bt.neu6.edu.cn/plugin.php?id=neubt_resourceindex" target="_blank">
 						<strong>六维空间</strong>
                         <span class="alive icon">
                             <span class="bar a"></span>
@@ -71,8 +73,8 @@
                         <a href="http://rs.xidian.edu.cn/bt.php?mod=browse&t=all" class="circle" target="_blank">
                             <span class="the-circle"></span>
                             <strong>1</strong>
-    						            <small>睿思</small>
-					            </a>
+    						<small>睿思</small>
+					    </a>
                         <a href="https://nanyangpt.com/torrents.php" class="two circle" target="_blank"> 
                             <span class="the-circle"></span>
 							<strong>2</strong>
@@ -161,18 +163,12 @@
 			var app = {
 				init : function() {
 					this.initPage();
-					this.loadPage();
 					this.bindLinkJump();
 				},
 				initPage : function() {
 					var page = $('.page'), body = $('body');
 					if (page.hasClass('home-page')) {
 						this.bindHomeEvent();
-					}
-					if (page.hasClass('post-page')) {
-						setTimeout(function() {
-							body.addClass('scrollable');
-						}, 1500);
 					}
 				},
 				loadPage : function() {
@@ -195,26 +191,6 @@
 								}
 								;
 							}, 50);
-				},
-				bindLinkJump : function() {
-					var body = $('body'), a = document
-							.getElementsByTagName('a');
-					$(a).bind('click', function(e) {
-						e.preventDefault();
-						var self = $(this);
-						var link = self.attr('href');
-						if (self.attr('target')) {
-							window.open(link);
-						} else {
-							body.removeClass('scrollable');
-							body.removeClass('loaded');
-							body.addClass('quiting');
-							setTimeout(function() {
-								window.location.href = link;
-								clearTimeout();
-							}, 800);
-						}
-					})
 				},
 				bindHomeEvent : function() {
 					var homePage = $('#homePage'), selectNav = $('#selectNav'), previewMini = $('.preview-mini'), data;
