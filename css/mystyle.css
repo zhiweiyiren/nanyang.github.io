@@ -723,7 +723,7 @@ body.scrollable {
 }
 
 .spinner .rings .ring.one {
-    background-image: url("http://www.54tianzhisheng.cn/images/1.png");
+    background-image: url("../images/1.png");
     -webkit-animation-duration: 70s;
     animation-duration: 70s;
     -webkit-animation-direction: reverse;
@@ -731,13 +731,13 @@ body.scrollable {
 }
 
 .spinner .rings .ring.two {
-    background-image: url("http://www.54tianzhisheng.cn/images/2.png");
+    background-image: url("../images/2.png");
     -webkit-animation-duration: 190s;
     animation-duration: 190s
 }
 
 .spinner .rings .ring.three {
-    background-image: url("http://www.54tianzhisheng.cn/images/3.png");
+    background-image: url("../images/3.png");
     -webkit-animation-duration: 80s;
     animation-duration: 80s;
     -webkit-animation-direction: reverse;
