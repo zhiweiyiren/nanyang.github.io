@@ -85,22 +85,13 @@
 	-webkit-user-select:none;
 	-o-user-select:none;
 	user-select:none;
-	background:url(../img/audio_sprite.png) no-repeat 0 9999px;
+	background:url(../images/audio_sprite.png) no-repeat 0 9999px;
 }
 #player .ctrl .icon:hover,#player .ctrl .icon.enable {
 	opacity:1
 }
 #player .ctrl .icon:active {
 	opacity:0.3
-}
-.liebiao {
-	background-image:url(../img/liebiao.png);
-	background-position:-58px -14px !important;
-	width:13px;
-	height:10px;
-	position:absolute;
-	left:229px;
-	top:40px;
 }
 #player .ctrl .control {
 	margin-top:10px;
@@ -199,7 +190,7 @@
 	height:20px;
 	top:20px;
 	position:relative;
-	background:transparent url("../img/2.png") repeat scroll 0% 0%;
+	background:transparent url("../images/toright.png") repeat scroll 0% 0%;
 }
 #pContent .ssBtn .adf.on {
 	transform:rotate(180deg);
