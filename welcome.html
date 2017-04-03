@@ -10,7 +10,7 @@
 	<meta name="author" content="Wang Chaoyan">
 	<title>PT站统计</title>
 	<link href="css/mystyle.css" rel="stylesheet" type="text/css">
-	<script src="js/jquery.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="css/player.css" type="text/css">
 </head>
 <body class="loaded">
 	<div id="container" class="container modify">
@@ -24,7 +24,7 @@
 					<a href="http://rs.xidian.edu.cn/bt.php?mod=browse&t=all" target="_blank"> 
 						<strong>西电睿思</strong>
 						<span class="alive icon">
-							<span class="bar a"></span>
+							<span class="bar"></span>
 							<span class="bar b"></span>
 							<span class="bar c"></span>
 						</span>
@@ -35,7 +35,7 @@
 					<a href="https://nanyangpt.com/torrents.php" target="_blank"> 
 						<strong>南洋园</strong>
 						<span class="alive icon">
-							<span class="bar a"></span>
+							<span class="bar"></span>
 							<span class="bar b"></span>
 							<span class="bar c"></span>
 						</span>
@@ -46,7 +46,7 @@
 					<a href="http://bt.neu6.edu.cn/plugin.php?id=neubt_resourceindex" target="_blank">
 						<strong>六维空间</strong>
                         <span class="alive icon">
-                            <span class="bar a"></span>
+                            <span class="bar"></span>
                             <span class="bar b"></span>
                             <span class="bar c"></span>
                         </span>
@@ -118,6 +118,8 @@
 					</span>
 				</div>
 			</div>
+			<!-- 完全透明的一个div标签 -->
+			<!-- 在下面的子标签中将属性改成完全不透明状态 -->
 			<div class="spinner stationary">
 				<div class="preview spinner-frontend">
 					<div class="map-content">
@@ -163,6 +165,7 @@
 			var app = {
 				init : function() {
 					this.initPage();
+					//this.loadPage();
 					this.bindLinkJump();
 				},
 				initPage : function() {
@@ -170,28 +173,33 @@
 					if (page.hasClass('home-page')) {
 						this.bindHomeEvent();
 					}
+					// if (page.hasClass('post-page')) {
+					// 	setTimeout(function() {
+					// 		body.addClass('scrollable');
+					// 	}, 1500);
+					// }
 				},
-				loadPage : function() {
-					var body = $('body'), value = 0, interval = setInterval(
-							function() {
-								value++;
-								if (document.readyState === "interactive"
-										|| document.readyState === "complete"
-										|| document.readyState === "Loaded") {
-									if (!body.hasClass('loading')) {
-										body.addClass('loading');
-									}
-									;
-								}
-								;
-								if (value >= 16) {
-									body.removeClass('loading');
-									body.addClass('loaded');
-									clearInterval(interval);
-								}
-								;
-							}, 50);
-				},
+				// loadPage : function() {
+				// 	var body = $('body'), value = 0, interval = setInterval(
+				// 			function() {
+				// 				value++;
+				// 				if (document.readyState === "interactive"
+				// 						|| document.readyState === "complete"
+				// 						|| document.readyState === "Loaded") {
+				// 					if (!body.hasClass('loading')) {
+				// 						body.addClass('loading');
+				// 					}
+				// 					;
+				// 				}
+				// 				;
+				// 				if (value >= 16) {
+				// 					body.removeClass('loading');
+				// 					body.addClass('loaded');
+				// 					clearInterval(interval);
+				// 				}
+				// 				;
+				// 			}, 50);
+				// },
 				bindHomeEvent : function() {
 					var homePage = $('#homePage'), selectNav = $('#selectNav'), previewMini = $('.preview-mini'), data;
 
@@ -212,9 +220,60 @@
 						$(this).addClass('show-' + _class);
 					};
 				}
+				// bindLinkJump : function() {
+				// 	var body = $('body'), a = document
+				// 			.getElementsByTagName('a');
+				// 	$(a).bind('click', function(e) {
+				// 		e.preventDefault();
+				// 		var self = $(this);
+				// 		var link = self.attr('href');
+				// 		if (self.attr('target')) {
+				// 			window.open(link);
+				// 		} else {
+				// 			body.removeClass('scrollable');
+				// 			body.removeClass('loaded');
+				// 			body.addClass('quiting');
+				// 			setTimeout(function() {
+				// 				window.location.href = link;
+				// 				clearTimeout();
+				// 			}, 800);
+				// 		}
+				// 	})
+				// },
 			}
 			app.init();
 		</script>
 	</div>
+	<div id="QPlayer">
+	    <div id="pContent">
+	        <div id="player">
+	            <span class="cover"></span>
+	            <div class="ctrl">
+	                <div class="musicTag marquee">
+	                    <strong>Title</strong>
+	                    <span> - </span>
+	                    <span class="artist">Artist</span>
+	                </div>
+	                <div class="progress">
+	                    <div class="timer left">0:00</div>
+	                    <div class="contr">
+	                        <div class="rewind icon"></div>
+	                        <div class="playback icon"></div>
+	                        <div class="fastforward icon"></div>
+	                    </div>
+	                    <div class="right">
+	                        <div class="liebiao icon"></div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	        <div class="ssBtn">
+	            <div class="adf"></div>
+	        </div>
+	    </div>
+	    <ol id="playlist"></ol>
+	</div>
+	<script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="js/player.js"></script>
 </body>
 </html>
