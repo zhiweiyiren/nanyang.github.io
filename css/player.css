@@ -87,6 +87,15 @@
 	user-select:none;
 	background:url(../images/audio_sprite.png) no-repeat 0 9999px;
 }
+.liebiao {
+	background-image:url(../img/liebiao.png);
+	background-position:-58px -14px !important;
+	width:13px;
+	height:10px;
+	position:absolute;
+	left:229px;
+	top:40px;
+}
 #player .ctrl .icon:hover,#player .ctrl .icon.enable {
 	opacity:1
 }
